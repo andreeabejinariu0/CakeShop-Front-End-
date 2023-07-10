@@ -2,7 +2,7 @@
 import Product from '../components/Product.vue';
 
 import {ref} from 'vue';
-import { watch } from 'vue'
+import { watch } from 'vue';
 import { onMounted } from "vue";
 import axios from "axios";
 
@@ -50,6 +50,7 @@ watch(() => props.id ,() => {
   <Product
      v-for="product in allProducts"
       :key="product.id"
+      :id="product.id"
       :name="product.name"
       :price="product.price"
       :description="product.description"

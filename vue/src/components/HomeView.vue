@@ -5,8 +5,8 @@
       <div class="row justify-content-between gy-5">
         <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
           <h2 data-aos="fade-up">Ai pofta de dulce ?</h2>
-          <p data-aos="fade-up" data-aos-delay="100">Sutem aici pentru tine</p>
-          <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
+          <p data-aos="fade-up" data-aos-delay="100">Suntem aici pentru tine</p>
+          <div class="d-flex" >
             <a href="#book-a-table" class="btn-book-a-table">Alege ce poftesti</a>
 
           </div>

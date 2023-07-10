@@ -14,8 +14,13 @@
   -webkit-text-size-adjust: 100%;
 }
 
+[data-aos="fade-up"] {
+  border-radius: 35%; /* Setează valoarea de rotonditate dorită */
+  background-color: #fcd7d7;
+}
+
 #hero {
-  background-image: url(http://magazin.test/img/cakeblur.jpg);
+  background-image: url(http://magazin.test/img/gold.jpg);
   background-size: cover;
   background-position: center;
 }

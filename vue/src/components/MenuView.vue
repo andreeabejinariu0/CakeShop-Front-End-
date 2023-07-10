@@ -39,7 +39,7 @@ function ChangeCategory(id, name)
           <p>Check Our <span>Cake Menu</span></p>
         </div>
 
-        <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
+        <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="300">
 
           <li 
           v-for="category in allCategory"
@@ -61,7 +61,7 @@ function ChangeCategory(id, name)
 
 
 
-        <div class="tab-content" data-aos="fade-up" data-aos-delay="300">
+        <div class="tab-content" data-aos="fade-up" data-aos-delay="400">
 
           <Category 
           :id="categoryID"

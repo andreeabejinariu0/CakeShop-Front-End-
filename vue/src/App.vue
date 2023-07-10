@@ -6,6 +6,8 @@ import MenuView from './components/MenuView.vue'
 import Footer from './components/Footer.vue'
 import HomeView from './components/HomeView.vue'
 import "../node_modules/bootstrap/dist/js/bootstrap.js";
+
+localStorage.setItem("cartProducts", JSON.stringify([]));
 </script>
 
 <template>

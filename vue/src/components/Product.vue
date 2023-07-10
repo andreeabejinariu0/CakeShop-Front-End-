@@ -1,7 +1,12 @@
 <script setup>
 import axios from "axios";
+import { ref } from 'vue';
+import { useShoppingCartStore } from '../stores/shoppingCart';
+
+const shoppingCartStore = useShoppingCartStore();
 
 const props = defineProps([
+  "id",
   "name",
   "price",
   "description",
@@ -11,15 +16,37 @@ const props = defineProps([
 //extract image from lavarel folder
 function getImageUrl(image) 
 {
-    const baseUrl = 'http://magazin.test/img/'; // înlocuiți cu URL-ul de bază al proiectului Laravel
+    const baseUrl = 'http://magazin.test/img/'; 
     return `${baseUrl}${image}`;
 };
+
+//adaugarea unui produs in cos
+function addProduct() {
+  let cartProducts = JSON.parse(localStorage.getItem('cartProducts'))
+
+  cartProducts.push({
+    id: props.id,
+    quantity: 1
+  })
+
+  localStorage.setItem('cartProducts', JSON.stringify(cartProducts))
+  shoppingCartStore.shoppingCart = cartProducts;
+
+  let total = localStorage.getItem('total');
+
+total = Number(total) + Number(props.price);
+
+localStorage.setItem('total', total);
+
+shoppingCartStore.total = total;
+
+}
 
 </script>
 
 <template>
      <div class="col-lg-4 menu-item">
-                <a href="assets/img/menu/menu-item-4.png" class="glightbox">
+                <a class="glightbox">
                   <img :src="getImageUrl(image)" class="img-fluid rounded border border-danger-emphasis border-3" alt=""></a>
                 <h4>{{ name }}</h4>
                 <p class="ingredients">
@@ -28,7 +55,7 @@ function getImageUrl(image)
                 <p class="price">
                     {{ price }} lei
                 </p>
-                <button type="button" class="btn btn-outline-danger">Adauga</button>
+                <button type="button"  class="btn btn-outline-danger"   @click="addProduct">Adauga</button>
               
 
               </div><!-- Menu Item -->
