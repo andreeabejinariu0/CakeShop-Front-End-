@@ -22,23 +22,30 @@ function getImageUrl(image)
 
 //adaugarea unui produs in cos
 function addProduct() {
-  let cartProducts = JSON.parse(localStorage.getItem('cartProducts'))
+//   let cartProducts = JSON.parse(localStorage.getItem('cartProducts'))
 
-  cartProducts.push({
-    id: props.id,
-    quantity: 1
-  })
+//   cartProducts.push({
+//     id: props.id,
+//     quantity: 1
+//   })
 
-  localStorage.setItem('cartProducts', JSON.stringify(cartProducts))
-  shoppingCartStore.shoppingCart = cartProducts;
+//   localStorage.setItem('cartProducts', JSON.stringify(cartProducts))
+//   shoppingCartStore.shoppingCart = cartProducts;
 
-  let total = localStorage.getItem('total');
+//   let total = localStorage.getItem('total');
 
-total = Number(total) + Number(props.price);
+// total = Number(total) + Number(props.price);
 
-localStorage.setItem('total', total);
+// localStorage.setItem('total', total);
 
-shoppingCartStore.total = total;
+// shoppingCartStore.total = total;
+
+  shoppingCartStore.updateShoppingCart({
+      id: props.id,
+      quantity: 1
+  });
+
+  shoppingCartStore. addToTotal(props.price) ;
 
 }
 
