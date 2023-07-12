@@ -24,9 +24,10 @@ const shoppingCartStore = useShoppingCartStore();
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <p class="fs-3" style="color: rgb(199, 53, 53);">Total: {{shoppingCartStore.total}} lei </p>
-  <button class="btn-book-a-table">Plasare comanda</button> 
+  
 
   <div class="offcanvas-body">
+    <button class="btn-danger" type="button"  ><RouterLink to="/order">Plasare comanda</RouterLink></button> 
     <CartProduct
           v-for="product in shoppingCartStore.shoppingCart"
           :key="product.id"

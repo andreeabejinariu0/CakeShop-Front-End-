@@ -20,8 +20,10 @@
 }
 
 #hero {
-  background-image: url(http://magazin.test/img/gold.jpg);
+  background-image: url(http://magazin.test/img/blur.jpg);
+  height: 70vh;
   background-size: cover;
+  position: relative;
   background-position: center;
 }
 
