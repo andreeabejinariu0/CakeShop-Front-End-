@@ -1,33 +1,37 @@
 <script setup>
-import {ref} from 'vue';
-import axios from 'axios';
-import { useShoppingCartStore } from '../stores/shoppingCart';
-import { useClientStore } from '../stores/ClientStore.js';
+import { ref } from "vue";
+import axios from "axios";
+import { useShoppingCartStore } from "../stores/shoppingCart";
+import { useClientStore } from "../stores/ClientStore.js";
 
 const shoppingCartStore = useShoppingCartStore();
 const clientStore = useClientStore();
 
-const address = ref('');
+const address = ref("");
 
 async function sendOrder() {
+ // clientStore.setClient(1);
 
-    clientStore.setClient(1);
-    console.log(
-        {
-    client_id: clientStore.clientId,
-    address: address.value,
-    price: shoppingCartStore.total,
-    product: shoppingCartStore.shoppingCart
-  }
+  // console.log({
+  //   clientId: clientStore.clientId,
+  //   address: address.value,
+  //   price: shoppingCartStore.total,
+  //   products: shoppingCartStore.shoppingCart
+  // })
 
-    )
-
-//   await axios.get('http://magazin.test/send-mail', {
-//     client_id: clientStore.clientId,
-//     address: address.value,
-//     price: shoppingCartStore.total,
-//     product: shoppingCartStore.shoppingCart
-//   })
+  await axios
+    .post("http://shop.test/send-order", {
+      clientId: clientStore.clientId,
+      address: address.value,
+      price: shoppingCartStore.total,
+      products: shoppingCartStore.shoppingCart,
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }
 </script>
 <template>

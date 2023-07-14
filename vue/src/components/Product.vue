@@ -16,7 +16,7 @@ const props = defineProps([
 //extract image from lavarel folder
 function getImageUrl(image) 
 {
-    const baseUrl = 'http://magazin.test/img/'; 
+    const baseUrl = 'http://shop.test/img/'; 
     return `${baseUrl}${image}`;
 };
 

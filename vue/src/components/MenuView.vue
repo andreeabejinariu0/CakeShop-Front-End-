@@ -14,7 +14,7 @@ const categoryName= ref('');
 onMounted(() => {
   axios({
     method: "get",
-    url: "http://magazin.test/category",
+    url: "http://shop.test/category",
   }).then((response) => {
     allCategory.value = response.data.slice();
     console.log(allCategory.value);

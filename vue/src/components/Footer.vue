@@ -1,6 +1,10 @@
 <script setup>
 import ShoppingCartView from './ShoppingCartView.vue';
+import { useClientStore } from "../stores/ClientStore.js";
+
 import { RouterLink } from 'vue-router'
+
+const clientStore = useClientStore();
 </script>
 <template>
     <header id="header" class="header fixed-top d-flex align-items-center">
@@ -20,10 +24,26 @@ import { RouterLink } from 'vue-router'
           <li><RouterLink to="/menu">Menu</RouterLink></li>
           <li><RouterLink to="/contact">Contact</RouterLink></li>
           <li class="dropdown">
-            <a href="#"><span>Account</span><i class="bi bi-person fs-6 fst-normal"></i></a>
+            <a href="#"
+              ><span>Account</span><i class="bi bi-person fs-6 fst-normal"></i
+            ></a>
             <ul>
-              <li><RouterLink to="/register">Register</RouterLink></li>
-              <li><RouterLink to="/login">Login</RouterLink></li>
+              <li v-if="clientStore.clientId == 0">
+                <RouterLink to="/login">Log in</RouterLink>
+              </li>
+              <li v-if="clientStore.clientId == 0">
+                <RouterLink to="/register">Register</RouterLink>
+              </li>
+              <li v-if="clientStore.clientId != 0">
+                <p class="ms-3 mt-2">
+                  {{ clientStore.clientId }} {{ clientStore.clientName }}
+                </p>
+              </li>
+              <li v-if="clientStore.clientId != 0">
+                <RouterLink @click="clientStore.clientId = 0" to="/login"
+                  >Log out</RouterLink
+                >
+              </li>
             </ul>
           </li>
         </ul>

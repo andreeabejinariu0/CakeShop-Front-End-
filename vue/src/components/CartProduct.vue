@@ -37,7 +37,7 @@ function deleteProduct() {
 
 // extragerea imaginii din laravel
 function getImageUrl(image) {
-  const baseUrl = 'http://magazin.test/img/'
+  const baseUrl = 'http://shop.test/img/'
 
   return `${baseUrl}${image}`
 }
