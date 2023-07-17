@@ -6,10 +6,10 @@ const name = ref("");
 const email = ref("");
 const password = ref("");
 const cPassword = ref("");
-const message = ref("Datele din formular sunt incorecte!");
+const message = ref("");
 
 async function register() {
-  if (email.value != "" && password.value != "") {
+  
     await axios
       .post("http://shop.test/register", {
         name: name.value,
@@ -29,8 +29,9 @@ async function register() {
 
       .catch(function (error) {
         console.log(error);
+        message.value = "Datele din formular sunt incorecte!";
       });
-  }
+  
 }
 </script>
 

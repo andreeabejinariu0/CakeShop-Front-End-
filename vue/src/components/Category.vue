@@ -18,7 +18,7 @@ const categoryid= ref(props.id);
 onMounted(() => {
   axios({
     method: "get",
-    url: "http://magazin.test/products/"+ props.id,
+    url: "http://shop.test/products/"+ props.id,
   }).then((response) => {
     allProducts.value = response.data.slice();
     console.log(allProducts.value);

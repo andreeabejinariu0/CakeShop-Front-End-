@@ -7,10 +7,9 @@ const clientStore = useClientStore();
 
 const email = ref("");
 const password = ref("");
-const message = ref("Email sau parola incorecta!");
+const message = ref("");
 
 async function login() {
-  if (email.value != "" && password.value != "") {
     await axios
       .post("http://shop.test/login", {
         email: email.value,
@@ -30,8 +29,9 @@ async function login() {
 
       .catch(function (error) {
         console.log(error);
+        message.value = "Email sau parola incorecta!";
       });
-  }
+  
 }
 </script>
 

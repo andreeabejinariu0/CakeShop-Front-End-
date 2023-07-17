@@ -20,7 +20,7 @@ const clientStore = useClientStore();
       <nav id="navbar" class="navbar">
         <ul>
           <li><RouterLink to="/">Home</RouterLink></li>
-          <li><a href="#about">About</a></li>
+          <li><RouterLink to="/about">About</RouterLink></li>
           <li><RouterLink to="/menu">Menu</RouterLink></li>
           <li><RouterLink to="/contact">Contact</RouterLink></li>
           <li class="dropdown">
@@ -36,8 +36,13 @@ const clientStore = useClientStore();
               </li>
               <li v-if="clientStore.clientId != 0">
                 <p class="ms-3 mt-2">
-                  {{ clientStore.clientId }} {{ clientStore.clientName }}
+                   {{ clientStore.clientName }}
                 </p>
+              </li>
+              <li v-if="clientStore.clientId != 0">
+                <RouterLink  to="/history"
+                  >History</RouterLink
+                >
               </li>
               <li v-if="clientStore.clientId != 0">
                 <RouterLink @click="clientStore.clientId = 0" to="/login"

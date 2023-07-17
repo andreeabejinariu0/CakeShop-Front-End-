@@ -10,6 +10,11 @@ const router = createRouter({
         component: HomeView
       },
       {
+        path: "/about",
+        name: "about",
+        component: () => import("../components/AboutView.vue"),
+      },
+      {
         path: "/menu",
         name: "menu",
         component: () => import("../components/MenuView.vue"),
@@ -18,6 +23,12 @@ const router = createRouter({
         path: "/contact",
         name: "contact",
         component: () => import("../components/ContactView.vue"),
+      },
+
+      {
+        path: "/history",
+        name: "history",
+        component: () => import("../components/HistoryOrder.vue"),
       },
     {
       path: "/register",

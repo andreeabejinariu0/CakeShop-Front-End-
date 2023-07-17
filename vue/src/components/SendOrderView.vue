@@ -6,11 +6,12 @@ import { useClientStore } from "../stores/ClientStore.js";
 
 const shoppingCartStore = useShoppingCartStore();
 const clientStore = useClientStore();
+const message = ref("");
 
 const address = ref("");
 
 async function sendOrder() {
- // clientStore.setClient(1);
+ //clientStore.setClient(1);
 
   // console.log({
   //   clientId: clientStore.clientId,
@@ -28,10 +29,15 @@ async function sendOrder() {
     })
     .then(function (response) {
       console.log(response);
+      message.value="Comanda a fost plasata cu succes!";
+      shoppingCartStore.shoppingCart = [];
+      shoppingCartStore.total = 0;
     })
     .catch(function (error) {
       console.log(error);
+      message.value = "Comanda nu a fost plasata!";
     });
+
 }
 </script>
 <template>
@@ -85,7 +91,43 @@ async function sendOrder() {
           <div class="sent-message">Your message has been sent. Thank you!</div>
         </div>
         <div class="text-center">
-          <button type="submit" @click="sendOrder()">Send order</button>
+          <button type="submit"     data-bs-toggle="modal"
+            data-bs-target="#exampleModal" @click="sendOrder()">Send order</button>
+        </div>
+      </div>
+
+         <!-- Modal -->
+         <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">
+                {{ message }}
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <!-- <div class="modal-body">Email sau parola incorecta</div> -->
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-danger"
+                data-bs-dismiss="modal"
+              >
+                Ok
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
