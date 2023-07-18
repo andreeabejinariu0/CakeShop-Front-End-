@@ -39,7 +39,12 @@ async function register() {
   <section id="contact" class="col contact">
     <div class="container" >
       <div class="section-header">
-     <h1>Cake<span  style="color:rgb(193, 39, 39)">.</span></h1>
+        <RouterLink to="/">
+        <img
+            src="http://shop.test/img/logofly.png"
+            class="img-fluid " style=" width: 150px;  height: 150px; margin-top: 25px;"
+            alt="Home image"
+          /></RouterLink>
      <p>Sign <span>up</span></p>
       </div>
 

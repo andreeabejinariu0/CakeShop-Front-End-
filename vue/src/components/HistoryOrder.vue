@@ -28,9 +28,8 @@ async function showProducts(orderId) {
         });
 }
 
-function getImageUrl(image) 
-{
-    const baseUrl = 'http://shop.test/img/'; 
+function getImageUrl(image) {
+    const baseUrl = 'http://shop.test/img/';
     return `${baseUrl}${image}`;
 };
 
@@ -70,25 +69,27 @@ function getImageUrl(image)
                     <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">
-                               Produse:
+                                Produse:
                             </h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <div v-for="product in products" :key="product.id">
                                 <div style="margin-bottom: 10px">
-                                    <img :src="getImageUrl(product.productImage)" class="img-fluid rounded border border-grey border-3" 
-                                     style="width: 18rem" alt=""><br> 
-                                    <strong>Nume:</strong> {{ product.productName }} <br> 
+                                    <img :src="getImageUrl(product.productImage)"
+                                        class="img-fluid rounded border border-grey border-3" style="width: 18rem"
+                                        alt=""><br>
+                                    <strong>Nume:</strong> {{ product.productName }} <br>
                                     <strong>Preț:</strong> {{ product.productPrice }} lei
                                 </div>
                             </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                                    Ok
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
-                            Ok
-                        </button>
                     </div>
                 </div>
             </div>

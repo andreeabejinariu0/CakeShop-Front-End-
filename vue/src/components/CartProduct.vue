@@ -13,7 +13,7 @@ const product = ref([])
 onMounted(() => {
   axios({
     method: 'get',
-    url: 'http://magazin.test/product/' + props.id
+    url: 'http://shop.test/product/' + props.id
   }).then((response) => {
     product.value = response.data;
   })

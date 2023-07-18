@@ -10,10 +10,13 @@ const clientStore = useClientStore();
     <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
       <RouterLink to="/">
-      <a href="#hero" class="logo d-flex align-items-center me-auto me-lg-0">
+      <a href="#hero"  > <img
+            src="http://shop.test/img/logofly.png"
+            class="img-fluid " style=" width: 100px;  height: 100px; margin-top: 25px;"
+            alt="Home image"
+          />
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1>Cake<span>.</span></h1>
       </a>
     </RouterLink>
 
