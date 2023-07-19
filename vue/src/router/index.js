@@ -46,6 +46,19 @@ const router = createRouter({
         component: () => import("../components/SendOrderView.vue"),
       },
 
+      {
+        path: "/crudProducts",
+        name: "crudProducts",
+        component: () => import("../components/CRUDProductsView.vue"),
+      },
+
+      {
+        path: "/crudCategories",
+        name: "crudCategories",
+        component: () => import("../components/CRUDCategoryView.vue"),
+      },
+
+
   ]
 })
 

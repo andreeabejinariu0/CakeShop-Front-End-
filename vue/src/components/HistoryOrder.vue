@@ -50,7 +50,7 @@ function getImageUrl(image) {
                 <div v-for="order in allOrders" :key="order.id" class="row gy-4 mb-2">
                     <div class="col-12" data-bs-toggle="modal" data-bs-target="#orderModal" @click="showProducts(order.id)">
                         <div class="info-item d-flex align-items-center">
-                            <i class="icon bi bi-map flex-shrink-0"></i>
+                            <i class="icon bi bi-bag-heart-fill flex-shrink-0"></i>
                             <div>
                                 <h3 style="color:brown">Adresa comenzii : <br> </h3>
                                 <h3>{{ order.address }}</h3>

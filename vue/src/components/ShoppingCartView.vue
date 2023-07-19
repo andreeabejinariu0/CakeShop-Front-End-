@@ -17,7 +17,7 @@ const clientStore = useClientStore();
 
 <template>
 
-<button class="btn-book-a-table" type="button" data-bs-toggle="offcanvas"
+<button class="btn-book-a-table border-0" type="button" data-bs-toggle="offcanvas"
  data-bs-target="#shoppingCart" aria-controls="shoppingCart">Cos de cumparaturi</button>
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="shoppingCart" aria-labelledby="shoppingCartLabel">

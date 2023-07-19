@@ -102,7 +102,7 @@ async function register() {
         </div>
         <div class="text-center">
           <button
-            class="btn btn-danger"
+            class="btn btn-dark"
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
             @click="register()"

@@ -42,16 +42,28 @@ const clientStore = useClientStore();
                    {{ clientStore.clientName }}
                 </p>
               </li>
-              <li v-if="clientStore.clientId != 0">
+              <li v-if="clientStore.clientToken !=  ''">
                 <RouterLink  to="/history"
-                  >History</RouterLink
+                  >Istoric</RouterLink
                 >
               </li>
-              <li v-if="clientStore.clientId != 0">
-                <RouterLink @click="clientStore.clientId = 0" to="/login"
+              <li v-if="clientStore.clientToken !=  ''">
+                <RouterLink @click="clientStore.setClient(0) ,  clientStore.setClientToken('')" to="/login"
                   >Log out</RouterLink
                 >
               </li>
+
+              <li v-if="clientStore.clientToken !=  ''">
+                <RouterLink to="/crudCategories"
+                  >CRUD Categorii</RouterLink
+                >
+              </li>
+              <li v-if="clientStore.clientToken !=  ''" >
+                <RouterLink to="/crudProducts"
+                  >CRUD Produse</RouterLink
+                >
+              </li>
+
             </ul>
           </li>
         </ul>

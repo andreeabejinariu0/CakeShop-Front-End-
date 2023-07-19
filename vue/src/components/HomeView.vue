@@ -14,16 +14,14 @@
           </p>
           <div  >
             <RouterLink to="/menu" class="btn-book-a-table" style=" float: right;">Alege ce poftesti</RouterLink>
-            >
+            
           </div>
         </div>
-        <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
+        <div class="col-lg-5 order-1 order-lg-2 ">
           <img
-            src="http://shop.test/img/gold.jpg"
-            class="img-fluid rounded border border-grey border-3"
+            src="http://shop.test/img/logo.png" style="position: absolute; top: 10%;  right: 10%; "
+            class="img-fluid "  
             alt="Home image"
-            data-aos="fade-up"
-            data-aos-delay="200"
           />
         </div>
       </div>
