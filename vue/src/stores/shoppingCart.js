@@ -9,12 +9,24 @@ export const useShoppingCartStore = defineStore('shoppingCart', {
     }
   },
   actions: {
+    setShoppingCart(cart) {
+      //setarea shooping cart
+      this.shoppingCart = String(cart)
+
+      Cookies.set('cartProducts', this.shoppingCart.toString())
+    },
     updateShoppingCart(product) {
       // Adaugă produsul în coșul de cumpărături
       this.shoppingCart.push(product)
       // Actualizează cookie-urile cu noul coș de cumpărături și totalul
       Cookies.set('cartProducts', JSON.stringify(this.shoppingCart))
     
+    },
+    setTotal(total) {
+      //setare total
+      this.total = Number(total);
+
+      Cookies.set('total', this.total.toString())
     },
 
    // Funcție pentru ștergerea unui produs în funcție de "id"

@@ -19,7 +19,6 @@ async function login() {
       console.log(response.data);
 
         clientStore.setClientToken(response.data.success.token);
-        clientStore.setClient(response.data.id);
         clientStore.setClientName(response.data.name);
         message.value = "Bun venit " + response.data.name + "!" ;
       
@@ -28,6 +27,21 @@ async function login() {
     .catch(function (error) {
       console.log(error);
       message.value = "Email sau parola incorecta!";
+    });
+
+    
+    await axios
+    .get("http://shop.test/role", {
+      headers: {
+        Authorization: "Bearer " + clientStore.clientToken,
+        Accept: "application/json",
+      },
+    })
+    .then(function (response) {
+      if (response.data.role == "admin") clientStore.setAdmin("true");
+      else clientStore.setAdmin("false");
+    })
+    .catch(function () {
     });
 
 }

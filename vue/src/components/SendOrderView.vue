@@ -11,7 +11,7 @@ const message = ref("");
 const address = ref("");
 
 async function sendOrder() {
- //clientStore.setClient(1);
+  //clientStore.setClient(1);
 
   // console.log({
   //   clientId: clientStore.clientId,
@@ -22,16 +22,22 @@ async function sendOrder() {
 
   await axios
     .post("http://shop.test/send-order", {
-      clientId: clientStore.clientId,
       address: address.value,
       price: shoppingCartStore.total,
       products: shoppingCartStore.shoppingCart,
-    })
+    },
+      {
+        headers: {
+          Authorization: "Bearer " + clientStore.clientToken,
+          Accept: "application/json",
+        },
+      }
+    )
     .then(function (response) {
       console.log(response);
-      message.value="Comanda a fost plasata cu succes!";
-      shoppingCartStore.shoppingCart = [];
-      shoppingCartStore.total = 0;
+      message.value = "Comanda a fost plasata cu succes!";
+      shoppingCartStore.setShoppingCart([]) ;
+      shoppingCartStore.setTotal (0);
     })
     .catch(function (error) {
       console.log(error);
@@ -42,7 +48,7 @@ async function sendOrder() {
 </script>
 <template>
   <section id="contact" class="col contact">
-    <div class="container" >
+    <div class="container">
       <div class="section-header">
         <p class="mt-2">Send order</p>
       </div>
@@ -50,15 +56,8 @@ async function sendOrder() {
       <div class="php-email-form p-3 p-md-4">
         <div class="row">
           <div class="col form-group">
-            <input
-              type="text"
-              class="form-control"
-              name="address"
-              id="adress"
-              v-model="address"
-              placeholder="Your Address:"
-              required
-            />
+            <input type="text" class="form-control" name="address" id="adress" v-model="address"
+              placeholder="Your Address:" required />
           </div>
         </div>
 
@@ -91,39 +90,24 @@ async function sendOrder() {
           <div class="sent-message">Your message has been sent. Thank you!</div>
         </div>
         <div class="text-center">
-          <button type="submit"     data-bs-toggle="modal"
-            data-bs-target="#exampleModal" @click="sendOrder()">Send order</button>
+          <button type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="sendOrder()">Send
+            order</button>
         </div>
       </div>
 
-         <!-- Modal -->
-         <div
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="exampleModalLabel">
                 {{ message }}
               </h1>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <!-- <div class="modal-body">Email sau parola incorecta</div> -->
             <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-danger"
-                data-bs-dismiss="modal"
-              >
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
                 Ok
               </button>
             </div>

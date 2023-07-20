@@ -3,15 +3,18 @@ import { ref, onMounted } from "vue";
 import axios from "axios";
 import { useClientStore } from "../stores/ClientStore.js";
 
-const clientStore = useClientStore();
-
 const allOrders = ref([]);
 const products = ref([]);
+const clientStore = useClientStore();
 
 onMounted(() => {
     axios({
         method: "get",
-        url: "http://shop.test/getOrders/" + clientStore.clientId,
+        url: "http://shop.test/getOrders" ,
+        headers: {
+          Authorization: "Bearer " + clientStore.clientToken,
+          Accept: "application/json",
+        },
     }).then(response => {
         allOrders.value = response.data.slice();
     });
@@ -19,7 +22,13 @@ onMounted(() => {
 
 async function showProducts(orderId) {
     await axios
-        .get("http://shop.test/getOrderProducts/" + orderId)
+        .get("http://shop.test/getOrderProducts/" + orderId,
+        {
+            headers: {
+                Authorization: "Bearer " + clientStore.clientToken,
+                Accept: "application/json",
+            },
+        })
         .then(function (response) {
             products.value = response.data.slice();
         })

@@ -126,7 +126,7 @@ function deleteCategory() {
                         </div>
                         <div class="col-sm-6">
                             <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addCategory" @click="
-                                (categoryId = category.id), (categoryName = category.name)
+                                (newCategoryName ='')
                                 ">
                                 <i class="bi bi-plus-circle-fill"></i>
                                 <span>Add New Category</span>
@@ -148,9 +148,10 @@ function deleteCategory() {
                             <td>{{ category.name }}</td>
                             <td>
                                 <button class="btn btn-outline-dark me-2" data-bs-toggle="modal"
-                                    data-bs-target="#editCategory" @click="
-                                        (categoryId = category.id), (categoryName = category.name)
-                                        ">
+                                    data-bs-target="#editCategory"
+                                     @click="(categoryId = category.id), 
+                                        (categoryName = category.name)
+                                        (newCategoryName = category.name)">
                                     <i class="bi bi-pencil"></i>
                                 </button>
                                 <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#deleteCategory"

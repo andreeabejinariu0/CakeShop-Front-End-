@@ -4,20 +4,12 @@ import Cookies from 'js-cookie'
 export const useClientStore = defineStore('clientStore', {
   state: () => {
     return {
-      clientId: parseInt(Cookies.get('clientId') || 0),
       clientName: Cookies.get('clientName') || "",
-      clientToken:  Cookies.get('userToken') || ""
+      clientToken:  Cookies.get('userToken') || "", 
+      admin:  Cookies.get('admin') || "false"
     }
   },
   actions: {
-    setClient(id)
- {
-      //setarea unui anumit client
-      this.clientId = Number(id)
-
-
-      Cookies.set('clientId', this.clientId.toString())
-    },
     setClientName(name) {
       //setarea numelui clientului
       this.clientName = String(name)
@@ -29,6 +21,12 @@ export const useClientStore = defineStore('clientStore', {
       this.clientToken = String(token)
 
       Cookies.set('userToken', this.clientToken.toString())
+    },
+    setAdmin(isAdmin) {
+      //setarea numelui clientului
+      this.admin = String(isAdmin)
+
+      Cookies.set('admin', this.admin.toString())
     },
   }
 })

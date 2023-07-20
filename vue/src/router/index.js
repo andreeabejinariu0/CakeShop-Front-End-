@@ -58,6 +58,12 @@ const router = createRouter({
         component: () => import("../components/CRUDCategoryView.vue"),
       },
 
+      {
+        path: "/crudUsers",
+        name: "crudUsers",
+        component: () => import("../components/CRUDUsersView.vue"),
+      },
+
 
   ]
 })
